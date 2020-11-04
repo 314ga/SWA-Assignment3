@@ -32,9 +32,9 @@ function WeatherPage() {
                 <div className="col-md-6 mx-auto text-white text-center">
                     <h4 className="h4 mt-2 mb-5">Weather Forecast and Weather History</h4>
                     <div id="locations">
-                        <Button variant="outline-info" id="horsens" onClick={() => retrieveAllData('Horsens')}>Horsens</Button>{' '}
-                        <Button variant="outline-info" id="aarhus" onClick={() => retrieveAllData('Aarhus')}>Århus</Button>{' '}
-                        <Button variant="outline-info" id="copenhagen" onClick={() => retrieveAllData('Copenhagen')}>Copenhagen</Button>{' '}
+                        <Button className="outline-btn" variant="outline-info" id="horsens" onClick={() => retrieveAllData('Horsens')}>Horsens</Button>{' '}
+                        <Button className="outline-btn" id="aarhus" onClick={() => retrieveAllData('Aarhus')}>Århus</Button>{' '}
+                        <Button className="outline-btn" id="copenhagen" onClick={() => retrieveAllData('Copenhagen')}>Copenhagen</Button>{' '}
                         <PostData />{' '}
                     </div>
                     <div>
@@ -47,18 +47,18 @@ function WeatherPage() {
                 <Card>
                     <div className="row text-center">
                         <div className="col-6">
-                            <Card.Header>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                            <Card className="my-card">
+                                <Accordion.Toggle as={Button} className="outline-link" eventKey="0">
                                     SEE WEATHER FORECAST
       </Accordion.Toggle>
-                            </Card.Header>
+                            </Card>
                         </div>
                         <div className="col-6">
-                            <Card.Header>
-                                <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                            <Card className="my-card">
+                                <Accordion.Toggle as={Button} className="outline-link" eventKey="1">
                                     SEE WEATHER HISTORY
       </Accordion.Toggle>
-                            </Card.Header>
+                            </Card>
                         </div>
                     </div>
                     <Accordion.Collapse eventKey="0">
@@ -66,7 +66,8 @@ function WeatherPage() {
                             <thead className="text-center">
                                 <tr>
                                     <th>Type</th>
-                                    <th>Value</th>
+                                    <th>From</th>
+                                    <th>To</th>
                                     <th>Unit</th>
                                     <th>time</th>
                                     <th>Precipitation Type</th>
@@ -89,7 +90,8 @@ function WeatherPage() {
                                         })
                                         return <tr key={index}>
                                             <td>{item.type}</td>
-                                            <td>{item.value}</td>
+                                            <td>{item.from}</td>
+                                            <td>{item.to}</td>
                                             <td>{item.unit}</td>
                                             <td>{item.time}</td>
                                             <td>{str}</td>
@@ -110,7 +112,8 @@ function WeatherPage() {
                                         })
                                         return <tr key={index}>
                                             <td>{item.type}</td>
-                                            <td>{item.value}</td>
+                                            <td>{item.from}</td>
+                                            <td>{item.to}</td>
                                             <td>{item.unit}</td>
                                             <td>{item.time}</td>
                                             <td>-</td>
@@ -121,7 +124,8 @@ function WeatherPage() {
                                     else
                                         return <tr key={index}>
                                             <td>{item.type}</td>
-                                            <td>{item.value}</td>
+                                            <td>{item.from}</td>
+                                            <td>{item.to}</td>
                                             <td>{item.unit}</td>
                                             <td>{item.time}</td>
                                             <td>-</td>
