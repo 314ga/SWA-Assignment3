@@ -38,7 +38,7 @@ export function retrieveForecastData(type)
             }
         });
 
-        
+    if(data != undefined)
         dispatch(setForecastData(data));
     
     }

@@ -38,7 +38,8 @@ export function retrieveHistoricData(type)
             }
         });
 
-        dispatch(setHistoricData(data));
+        if(data != undefined)
+            dispatch(setHistoricData(data));
     
     }
 }
