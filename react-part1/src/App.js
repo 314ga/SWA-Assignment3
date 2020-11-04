@@ -1,6 +1,5 @@
 import './App.css';
 import WeatherPage from './components/WeatherPage';
-import Button from 'react-bootstrap/Button'
 
 function App() {
 

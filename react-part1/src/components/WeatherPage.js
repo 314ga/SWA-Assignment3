@@ -3,10 +3,10 @@ import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
-import Background from '../img/Horsens.jpg';
 import store from '../store'
-import { retrieveHistoricData, postHistoricData } from '../reducers/weatherData'
+import { retrieveHistoricData } from '../reducers/weatherData'
 import { retrieveForecastData } from '../reducers/weatherForecast'
+import PostData from './PostData';
 
 
 //redux
@@ -35,7 +35,7 @@ function WeatherPage() {
                         <Button variant="outline-info" id="horsens" onClick={() => retrieveAllData('Horsens')}>Horsens</Button>{' '}
                         <Button variant="outline-info" id="aarhus" onClick={() => retrieveAllData('Aarhus')}>Århus</Button>{' '}
                         <Button variant="outline-info" id="copenhagen" onClick={() => retrieveAllData('Copenhagen')}>Copenhagen</Button>{' '}
-                        <Button variant="outline-info" id="test" onClick={() => store.dispatch(postHistoricData("data", "temperature", 36.5, 'C', "2020-10-25T23:00:00.000Z", "Horsens", null))}>PostTest</Button>{' '}
+                        <PostData />{' '}
                     </div>
                     <div>
 
