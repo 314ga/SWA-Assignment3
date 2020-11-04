@@ -11,18 +11,16 @@ export const resetHistoricData = () =>
         type: 'RESETDATA'
     };
 };
-
-export const setForecastData = (forecast) =>
+export const setForecastData = (data) =>
 {
     return {
         type: 'SETFORECAST',
-        payload: forecast
+        payload: data
     };
 };
-
 export const resetForecastData = () =>
 {
     return {
-        type: 'RESETFORECAST',
+        type: 'RESETFORECAST'
     };
 };

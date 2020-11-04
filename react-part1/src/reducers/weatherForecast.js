@@ -1,11 +1,45 @@
-const weatherForecastReducer = (state = undefined, action) => {
+import {setForecastData} from '../actions';
+import {api} from '../utils/RestAPI'
+  
+export default function weatherForecastReducer (state = [], action) {
     switch(action.type){
         case 'SETFORECAST':
-            return state = action.payload;
+            return action.payload;
         case 'RESETFORECAST':
-            return state = undefined;
+            return state = [];
         default:
-            return 0;
+            return state;
     } 
 }
-export default weatherForecastReducer;
+
+//retrieve data with REST API and set it to the store
+export function retrieveForecastData(type)
+{
+    return async function fetchWeatherData(dispatch, getState){
+        const data = await api.get(type)
+        .then(({data}) => data)
+        .catch((err) =>{
+            if(err.response)
+            {
+                console.log(err.response.data);
+                console.log(err.response.status);
+                console.log(err.response.headers);
+                console.log(err.config);
+            }
+            else if (err.request) 
+            { 
+                console.log(err.request);
+                console.log(err.config);
+            } 
+            else 
+            { 
+                console.log('Error', err.message);
+                console.log(err.config);
+            }
+        });
+
+        
+        dispatch(setForecastData(data));
+    
+    }
+}
