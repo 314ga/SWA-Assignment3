@@ -1,12 +1,10 @@
 import './App.css';
-import Filter from './components/Filter';
 import WeatherPage from './components/WeatherPage';
 function App() {
 
 
   return (
     <div>
-      <Filter />
       <WeatherPage />
     </div >
   );

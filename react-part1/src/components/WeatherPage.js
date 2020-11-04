@@ -15,6 +15,7 @@ import { retrieveHistoricData } from '../reducers/weatherData'
 import { retrieveForecastData } from '../reducers/weatherForecast'
 import PostData from './PostData';
 import { useState } from 'react';
+import Filter from './Filter';
 
 //redux
 import { useSelector } from 'react-redux';
@@ -52,9 +53,6 @@ function WeatherPage() {
                 <div className="col-md-6 mx-auto text-white text-center">
                     <h4 className="h4 mt-2 mb-5">Weather Forecast and Weather History</h4>
                     <div id="locations">
-                        <Button className="outline-btn active" variant="outline-info" id="horsens" onClick={() => retrieveAllData('Horsens')}>Horsens</Button>{' '}
-                        <Button className="outline-btn" id="aarhus" onClick={() => retrieveAllData('Aarhus')}>Århus</Button>{' '}
-                        <Button className="outline-btn" id="copenhagen" onClick={() => retrieveAllData('Copenhagen')}>Copenhagen</Button>{' '}
                         <PostData />{' '}
 
                     </div>
@@ -67,7 +65,9 @@ function WeatherPage() {
                         </ToggleButtonGroup>
 
                         <br />
-
+                    </div>
+                    <div>
+                        <Filter props={selectedCity} />
 
                     </div>
                 </div>
