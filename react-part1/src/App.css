@@ -28,6 +28,12 @@ body {
   color: white !important;
 }
 
+.outline-link.active {
+  border-color: #06b2e2 !important;
+  background-color: #06aad8 !important;
+  color: white !important;
+}
+
 .outline-btn {
   border-radius: 25%;
   border-color: rgb(255, 255, 255) !important;
