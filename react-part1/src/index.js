@@ -8,8 +8,8 @@ import { Provider } from 'react-redux'
 import { retrieveHistoricData } from './reducers/weatherData'
 import { retrieveForecastData } from './reducers/weatherForecast';
 
-store.dispatch(retrieveHistoricData("data/Horsens"));
-store.dispatch(retrieveForecastData("forecast/Horsens"))
+store.dispatch(retrieveHistoricData("data/Horsens", false, null, null));
+store.dispatch(retrieveForecastData("forecast/Horsens", false, null, null));
 
 ReactDOM.render(
   //added provider for react-redux

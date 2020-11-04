@@ -1,6 +1,6 @@
 import {setHistoricData} from '../actions';
 import {api} from '../utils/RestAPI'
-  
+import {getDataFromPeriod} from '../utils/Filters';
 export default function weatherDataReducer (state = [], action) {
     switch(action.type){
         case 'SETDATA':
@@ -13,7 +13,7 @@ export default function weatherDataReducer (state = [], action) {
 }
 
 //retrieve data with REST API and set it to the store
-export function retrieveHistoricData(type)
+export function retrieveHistoricData(type,filter, startDate, endDate)
 {
     return async function fetchWeatherData(dispatch, getState){
         const data = await api.get(type)
@@ -37,12 +37,20 @@ export function retrieveHistoricData(type)
                 console.log(err.config);
             }
         });
-
+        
         if(data != undefined)
-            dispatch(setHistoricData(data));
+        {
+            if(!filter)
+                dispatch(setHistoricData(data));
+            else
+                dispatch(setHistoricData(getDataFromPeriod(data,startDate,endDate)));
+        }
+
     
     }
 }
+
+
 
 //post data with REST API to the server
 export function postHistoricData(requestType,type,value,unit,time,place, extras)

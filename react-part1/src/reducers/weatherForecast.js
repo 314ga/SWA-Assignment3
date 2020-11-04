@@ -1,6 +1,7 @@
 import {setForecastData} from '../actions';
 import {api} from '../utils/RestAPI'
-  
+import {getDataFromPeriod} from '../utils/Filters';
+
 export default function weatherForecastReducer (state = [], action) {
     switch(action.type){
         case 'SETFORECAST':
@@ -13,7 +14,7 @@ export default function weatherForecastReducer (state = [], action) {
 }
 
 //retrieve data with REST API and set it to the store
-export function retrieveForecastData(type)
+export function retrieveForecastData(type, filter, startDate, endDate)
 {
     return async function fetchWeatherData(dispatch, getState){
         const data = await api.get(type)
@@ -39,7 +40,12 @@ export function retrieveForecastData(type)
         });
 
     if(data != undefined)
-        dispatch(setForecastData(data));
+    {
+        if(!filter)
+            dispatch(setForecastData(data));
+        else
+            dispatch(setForecastData(getDataFromPeriod(data,startDate,endDate)));           
+    }
     
     }
 }
