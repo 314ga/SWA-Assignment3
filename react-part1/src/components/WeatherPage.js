@@ -57,9 +57,9 @@ function WeatherPage() {
 
                     </div>
 
-                    <div>
+                    <div className="my-3">
                         <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-                            <ToggleButton className="outline-btn" value={1} onClick={() => onBtnChangeHandler('Horsens')}>Horsens</ToggleButton>
+                            <ToggleButton value={1} onClick={() => onBtnChangeHandler('Horsens')}>Horsens</ToggleButton>
                             <ToggleButton value={2} onClick={() => onBtnChangeHandler('Aarhus')}>Århus</ToggleButton>
                             <ToggleButton value={3} onClick={() => onBtnChangeHandler('Copenhagen')}>Copenhagen</ToggleButton>
                         </ToggleButtonGroup>
@@ -68,6 +68,7 @@ function WeatherPage() {
                     </div>
                     <div>
                         <Filter props={selectedCity} />
+                        <Button className="outline-btn mt-3" onClick={retrieveAllData(selectedCity)}>Reload data</Button>{' '}
 
                     </div>
                 </div>
@@ -75,10 +76,10 @@ function WeatherPage() {
             </Jumbotron>
             <Accordion>
                 <Card>
-                    <div className="row text-center">
+                    <div className="row text-center mb-5">
                         <div className="col-6">
                             <Card className="my-card">
-                                <Accordion.Toggle as={Button} className="outline-link" eventKey="0">SEE WEATHER FORECAST</Accordion.Toggle>
+                                <Accordion.Toggle as={Button} className="outline-link " eventKey="0">SEE WEATHER FORECAST</Accordion.Toggle>
                             </Card>
                         </div>
                         <div className="col-6">

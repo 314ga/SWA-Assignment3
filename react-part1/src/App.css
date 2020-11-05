@@ -28,11 +28,7 @@ body {
   color: white !important;
 }
 
-.outline-link.active {
-  border-color: #06b2e2 !important;
-  background-color: #06aad8 !important;
-  color: white !important;
-}
+
 
 .outline-btn {
   border-radius: 25%;
@@ -41,10 +37,19 @@ body {
   color: white !important;
 }
 
-.outline-btn:hover {
+.outline-link:hover {
   border-color: #06b2e2 !important;
   background-color: #06aad8 !important;
-  color: white;
+  color: white !important;
+}
+
+
+svg {
+  stroke: white;
+}
+
+.react-datetime-picker__inputGroup__input {
+  color: white !important
 }
 
 .BgStyle {
