@@ -1,10 +1,8 @@
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import DateTimePicker from 'react-datetime-picker';
-import store from '../store';
 import React from 'react';
-import { retrieveHistoricData } from '../reducers/weatherData'
-import { retrieveForecastData } from '../reducers/weatherForecast'
+import {retrieveAllData} from '../utils/StoreHandler'
 
 function Filter(props) {
 
@@ -13,19 +11,22 @@ function Filter(props) {
 
     //add here name of the actual selected city(maybe use states will be neccessery)
     const handleApplyFilter = () => {
-        console.log(props.props);
-        store.dispatch(retrieveForecastData("forecast/" + props.props, true, startTime, endTime));
-        store.dispatch(retrieveHistoricData("data/" + props.props, true, startTime, endTime));
-
+        triggerFilterSet(true,startTime,endTime);
+        retrieveAllData(props.selectedCity, true, startTime, endTime);
+       
     };
 
     //add here name of the actual selected city(maybe use states will be neccessery)
     const handleResetFilter = () => {
-        store.dispatch(retrieveHistoricData("data/" + props.props, false, null, null));
-        store.dispatch(retrieveForecastData("forecast/" + props.props, false, null, null));
+        triggerFilterSet(false,null,null);
+        retrieveAllData(props.selectedCity, false, startTime, endTime);
         setStartTime(new Date());
         setEndTime(new Date());
+        
     };
+    const triggerFilterSet = (value,sTime,eTime) => {
+        props.triggerFilterSet(value,sTime,eTime);
+    }
 
     const onChangeStart = startTime => setStartTime(startTime);
     const onChangeEnd = endTime => setEndTime(endTime);

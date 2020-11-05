@@ -40,10 +40,14 @@ export function retrieveHistoricData(type,filter, startDate, endDate)
         
         if(data != undefined)
         {
+           
             if(!filter)
                 dispatch(setHistoricData(data));
             else
+            {
                 dispatch(setHistoricData(getDataFromPeriod(data,startDate,endDate)));
+            }
+              
         }
 
     

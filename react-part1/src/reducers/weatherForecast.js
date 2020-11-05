@@ -41,6 +41,7 @@ export function retrieveForecastData(type, filter, startDate, endDate)
 
     if(data != undefined)
     {
+    
         if(!filter)
             dispatch(setForecastData(data));
         else

@@ -5,44 +5,43 @@ import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
-
-//variable imports
-import store from '../store'
-import { retrieveHistoricData } from '../reducers/weatherData'
-import { retrieveForecastData } from '../reducers/weatherForecast'
 import PostData from './PostData';
 import { useState } from 'react';
 import Filter from './Filter';
+import {retrieveAllData} from '../utils/StoreHandler'
 
 //redux
 import { useSelector } from 'react-redux';
 
+function WeatherPage(props) {
 
-
-
-function WeatherPage() {
-    //react useState for checking buttons state
+    //react useState 
     const [selectedCity, setSelectedCity] = useState('Horsens');
     const [debounce, setDebounce] = useState(false);
-
+    const [filterSet, setFilterSet] = useState(false);
+    const [selectedSDate, setselectedSDate] = useState(null);
+    const [selectedEDate, setselectedEDate] = useState(null);
 
     //data reducers
     const historicData = useSelector(state => state.historicData);
     const forecastData = useSelector(state => state.forecastData);
-    //function to dipatch weather forecast & weather history
-    const retrieveAllData = (type) => {
-        store.dispatch(retrieveHistoricData("data/" + type, false, null, null));
-        store.dispatch(retrieveForecastData("forecast/" + type, false, null, null));
+
+    const handleCallback = (filterValue,sDate,eDate) =>
+    {
+        setFilterSet(filterValue);
+        setselectedSDate(sDate);
+        setselectedEDate(eDate);
     }
+
     //toggle buttons
     const onBtnChangeHandler = (city) => {
 
         if (!debounce) {
-            retrieveAllData(city);
             setSelectedCity(city);
+            retrieveAllData(city,filterSet,selectedSDate,selectedEDate);
+       
         }
         setDebounce(!debounce)
     }
@@ -67,9 +66,10 @@ function WeatherPage() {
                         <br />
                     </div>
                     <div>
-                        <Filter props={selectedCity} />
-                        <Button className="outline-btn mt-3" onClick={retrieveAllData(selectedCity)}>Reload data</Button>{' '}
-
+                        <Filter selectedCity={selectedCity} triggerFilterSet = {handleCallback}/>
+                    </div>
+                    <div>   
+                         <Button className="outline-btn mt-3" onClick={() => retrieveAllData(selectedCity)}>Reload data</Button>{' '}
                     </div>
                 </div>
 
