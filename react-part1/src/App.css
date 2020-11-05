@@ -10,35 +10,67 @@ body {
   line-height: 1.6;
 }
 
-.my-card {
 
-  border-color: red;
+
+
+
+.btn-info {
+  border-color: #06aad8 !important;
+  background-color: transparent !important;
+  color: white !important;
+
+
 }
 
-.outline-link {
-  border-radius: 25%;
-  border-color: rgb(255, 255, 255) !important;
+.btn-info:not(.disabled).active {
+  border-color: #06aad8 !important;
+  background-color: #06aad8 !important;
+  color: white !important;
+}
+
+.btn-info:hover {
+  border-color: #06aad8 !important;
+  background-color: #06aad8 !important;
+  color: white !important;
+}
+
+.myCard {
+  border-color: transparent !important;
+}
+
+.outline-btn {
+  border-color: #06aad8 !important;
   background-color: transparent !important;
-  color: rgb(75, 75, 75) !important;
+  color: white !important;
+}
+
+
+.outline-link {
+
+  background-color: white !important;
+  color: #06aad8 !important;
+  font-weight: 600 !important;
+  border-color: #06aad8 !important;
+
+
 }
 
 .outline-link:hover {
-  border-color: #06b2e2 !important;
+  border-color: #06aad8 !important;
+  background-color: #06aad8 !important;
+  color: white !important;
+}
+
+.outline-link:focus {
+  border-color: #06aad8 !important;
   background-color: #06aad8 !important;
   color: white !important;
 }
 
 
 
-.outline-btn {
-  border-radius: 25%;
-  border-color: rgb(255, 255, 255) !important;
-  background-color: transparent !important;
-  color: white !important;
-}
-
-.outline-link:hover {
-  border-color: #06b2e2 !important;
+.outline-btn:hover {
+  border-color: #06aad8 !important;
   background-color: #06aad8 !important;
   color: white !important;
 }
@@ -48,9 +80,12 @@ svg {
   stroke: white;
 }
 
+.react-datetime-picker__wrapper {}
+
 .react-datetime-picker__inputGroup__input {
-  color: white !important
+  color: white;
 }
+
 
 .BgStyle {
   background: linear-gradient(rgba(129, 172, 238, 0.7),
