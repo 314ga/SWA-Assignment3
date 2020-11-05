@@ -64,7 +64,7 @@ function PostData() {
                 Post History Data
       </Button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} className="myModal">
                 <Modal.Header closeButton>
                     <Modal.Title>Adding new weather data</Modal.Title>
                 </Modal.Header>
