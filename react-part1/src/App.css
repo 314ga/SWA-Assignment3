@@ -75,15 +75,34 @@ body {
   color: white !important;
 }
 
+.react-datetime-picker__inputGroup__input {
+  color: white !important;
+
+}
 
 svg {
   stroke: white;
 }
 
-.react-datetime-picker__wrapper {}
+.react-datetime-picker__wrapper {
+  color: white !important;
+  border: 1px solid #06aad8 !important;
+  border-radius: 4px;
 
-.react-datetime-picker__inputGroup__input {
-  color: white;
+}
+
+.myModal .react-datetime-picker__wrapper {
+  color: black !important;
+  border: 1px solid #06aad8 !important;
+  border-radius: 4px;
+}
+
+.myModal svg {
+  stroke: black;
+}
+
+.myModal .react-datetime-picker__inputGroup__input {
+  color: rgb(0, 0, 0) !important;
 }
 
 

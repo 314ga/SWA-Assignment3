@@ -7,17 +7,21 @@ import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup'
 import ToggleButton from 'react-bootstrap/ToggleButton'
+
+//variable imports
 import PostData from './PostData';
 import { useState } from 'react';
 import Filter from './Filter';
-import {retrieveAllData} from '../utils/StoreHandler'
+import { retrieveAllData } from '../utils/StoreHandler'
 
 //redux
 import { useSelector } from 'react-redux';
 
-function WeatherPage(props) {
 
-    //react useState 
+
+
+function WeatherPage() {
+    //react useState for checking buttons state
     const [selectedCity, setSelectedCity] = useState('Horsens');
     const [debounce, setDebounce] = useState(false);
     const [filterSet, setFilterSet] = useState(false);
@@ -28,20 +32,17 @@ function WeatherPage(props) {
     const historicData = useSelector(state => state.historicData);
     const forecastData = useSelector(state => state.forecastData);
 
-    const handleCallback = (filterValue,sDate,eDate) =>
-    {
+    const handleCallback = (filterValue, sDate, eDate) => {
         setFilterSet(filterValue);
         setselectedSDate(sDate);
         setselectedEDate(eDate);
     }
-
     //toggle buttons
     const onBtnChangeHandler = (city) => {
 
         if (!debounce) {
             setSelectedCity(city);
-            retrieveAllData(city,filterSet,selectedSDate,selectedEDate);
-       
+            retrieveAllData(city, filterSet, selectedSDate, selectedEDate);
         }
         setDebounce(!debounce)
     }
@@ -66,15 +67,8 @@ function WeatherPage(props) {
                         <br />
                     </div>
                     <div>
-<<<<<<< Updated upstream
-                        <Filter selectedCity={selectedCity} triggerFilterSet = {handleCallback}/>
-                    </div>
-                    <div>   
-                         <Button className="outline-btn mt-3" onClick={() => retrieveAllData(selectedCity)}>Reload data</Button>{' '}
-=======
-                        <Filter props={selectedCity} />
+                        <Filter selectedCity={selectedCity} triggerFilterSet={handleCallback} />
                         <div><Button className="outline-btn mt-3" onClick={() => retrieveAllData(selectedCity)}>Reload data</Button>{' '}</div>
->>>>>>> Stashed changes
                     </div>
                 </div>
 
@@ -180,7 +174,7 @@ function WeatherPage(props) {
 
                     <Accordion.Collapse eventKey="1">
                         <Card.Body>
-                            <p className="text-center lead"> Weather History For {selectedCity}</p>
+                            <p className="text-center lead"> Showing Weather History For {selectedCity}</p>
 
 
                             <Table id="weatherHistory" responsive striped bordered hover>
