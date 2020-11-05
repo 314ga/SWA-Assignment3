@@ -9,23 +9,31 @@ import { Config } from 'protractor';
 })
 export class RestAPIService {
   configUrl = 'http://localhost:8080/';
-  constructor(private http: HttpClient) 
-  {
+  constructor(private http: HttpClient) {}
 
-  }
- 
-
-  getAllData ()
+  getAllData(type)
   {
     const options = {
       responseType: 'json' as const,
     };
 
-    return this.http.get<Config>(this.configUrl, options)
+    return this.http.get<Config>(this.configUrl + type, options)
     .pipe(
       catchError(this.handleError)
     );
   }
+  /*postHistoricData(data)
+  {
+    return this.http.post<any>(this.configUrl + "data", { title: 'Angular POST Request Example' }).subscribe({
+        next: data => {
+            this.postId = data.id;
+        },
+        error: error => {
+            this.errorMessage = error.message;
+            console.error('There was an error!', error);
+        }
+    })
+  };*/
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
