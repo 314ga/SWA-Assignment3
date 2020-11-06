@@ -3,23 +3,15 @@
     <div class="col-md-6 mx-auto text-white text-center">
         <!-- blog title and author name -->
         <h4 class="h4 mt-2 mb-5">Weather Forecast & Weather History</h4>
-        <!-- <mat-button-toggle-group name="" aria-label="Font Style">
-                <mat-button-toggle value="">Horsens</mat-button-toggle>
-                <mat-button-toggle value="">Århus</mat-button-toggle>
-                <mat-button-toggle value="">Copenhagen</mat-button-toggle>
-            </mat-button-toggle-group> -->
+        <mat-button-toggle-group name="" aria-label="Font Style">
+            <mat-button-toggle (click)="getWeatherData('Horsens')" value="">Horsens</mat-button-toggle>
+            <mat-button-toggle toggle (click)="getWeatherData('Aarhus')" value="">Århus</mat-button-toggle>
+            <mat-button-toggle toggle (click)="getWeatherData('Copenhagen')" value="">Copenhagen</mat-button-toggle>
+        </mat-button-toggle-group>
 
     </div>
     <div>
         <app-filter></app-filter>
-    </div>
-    <div>
-        <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-        <button mat-button>Post</button>
-        <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-        <button mat-button>Refresh</button>
-
-
     </div>
 </div>
 <div>
@@ -50,6 +42,52 @@
 
 <!-- DISPLAYING DATA ON TABLES -->
 <div>
+    <ngb-accordion [closeOthers]="true" activeIds="static-1">
+        <ngb-panel id="static-1" title="Simple">
+            <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon
+                officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+                moon
+                tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+                keffiyeh
+                helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+                accusamus
+                labore sustainable VHS.
+            </ng-template>
+        </ngb-panel>
+        <ngb-panel id="static-2">
+            <ng-template ngbPanelTitle>
+                <span>&#9733; <b>Fancy</b> title &#9733;</span>
+            </ng-template>
+            <ng-template ngbPanelContent>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                moon
+                officia
+                aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+                moon
+                tempor,
+                sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+                keffiyeh
+                helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo.
+                Leggings
+                occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+                accusamus
+                labore sustainable VHS.
+            </ng-template>
+        </ngb-panel>
+
+    </ngb-accordion>
+</div>
+<!-- /accordian -->
+<!-- table showing weather data -->
+<div>
     <table class="table table-striped table-hover" *ngIf="weatherData">
         <thead>
             <tr>
@@ -72,7 +110,8 @@
                 <ng-template [ngIf]="element.type=='precipitation' " [ngIfElse]="dash">
                     <td>{{element.precipitation_type}}</td>
                 </ng-template>
-                <ng-template [ngIf]="element.type=='wind' " [ngIfElse]="dash">
+
+                <ng-template [ngIf]="element.type=='wind speed' " [ngIfElse]="dash">
                     <td>{{element.direction}}</td>
                 </ng-template>
                 <ng-template #dash>
