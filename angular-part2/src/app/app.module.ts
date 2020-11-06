@@ -5,12 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule} from '@angular/common/http';
-import { TestRestApiComponent } from './test-rest-api/test-rest-api.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TestRestApiComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

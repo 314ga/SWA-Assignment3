@@ -40,12 +40,12 @@ function PostData() {
                 }
             case "precipitation":
                 {
-                    store.dispatch(postHistoricData("data", type, value, unit, "2020-10-25T23:00:00.000Z", place, prec));
+                    store.dispatch(postHistoricData("data", type, value, unit, dateTime, place, prec));
                     break;
                 }
             case "wind speed":
                 {
-                    store.dispatch(postHistoricData("data", type, value, unit, "2020-10-25T23:00:00.000Z", place, wind));
+                    store.dispatch(postHistoricData("data", type, value, unit, dateTime, place, wind));
                     break;
                 }
             default:
