@@ -1,0 +1,44 @@
+<div id="weather-header" class="view jumbotron card-image blog-item-jumbotron h-50 px-5 py-5 BgStyle">
+
+    <div class="col-md-6 mx-auto text-white text-center">
+        <!-- blog title and author name -->
+
+        <h4 class="h4 mt-2 mb-5">Weather Forecast & Weather History</h4>
+
+        <br>
+        <br>
+        <br>
+
+        <div id="locations">
+            <button class="btn-primary">Hello</button>
+            <a href="#horsens" class="ml-2"><i class="fas fa-map-marked-alt"></i> Horsens</a>
+            <a href="#aarhus" class="ml-2"><i class="fas fa-map-marked-alt"></i> Århus</a>
+            <a href="#horsens" class="ml-2"><i class="fas fa-map-marked-alt"></i> Copenhagen</a>
+        </div>
+    </div>
+
+</div>
+<div>
+    <p> You've clicked <button type="button" class="btn btn-light" (click)="countClick()">this</button>{{clickCounter}}
+        times</p>
+    <div>
+        <!-- two way data binding...the input parameter will send and recieve data from and to the home component -->
+        <p><input type="text" [(ngModel)]="name">
+            <br>
+            <strong>you said</strong> {{name}}
+        </p>
+    </div>
+
+
+</div>
+<div [style.background-color]="clickCounter>4 ? 'yellow' : 'cyan' ">
+
+    <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none" ]>
+        <p>click counter >4</p>
+    </ng-template>
+
+    <ng-template #none>
+        <p>click counter not > 4</p>
+    </ng-template>
+
+</div>
