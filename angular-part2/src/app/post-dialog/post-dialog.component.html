@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Post something here</h2>
+<mat-dialog-content>{{data.name}}You can post stuff here</mat-dialog-content>
+
+<mat-form-field appearance="fill">
+    <mat-label>Choose a city</mat-label>
+    <select matNativeControl required>
+        <option value="Horsens">Horsens</option>
+        <option value="AArhus">Århus</option>
+        <option value="Copenhagen">Copenhagen</option>
+    </select>
+
+</mat-form-field>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close="false">Post Data</button>
+    <button mat-button mat-dialog-close="true">Cancel</button>
+</mat-dialog-actions>

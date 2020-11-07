@@ -7,9 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { } from '@angular/material/datepicker';
+import { } from '@angular/material/datepicker';
 @NgModule({
-    imports: [MatInputModule, MatExpansionModule, MatButtonToggleModule, MatDialogModule, MatNativeDateModule, MatFormFieldModule, MatSliderModule, MatButtonModule],
-    exports: [MatInputModule, MatExpansionModule, MatButtonToggleModule, MatDialogModule, MatNativeDateModule, MatFormFieldModule, MatSliderModule, MatButtonModule],
+    imports: [MatDatepickerModule, MatInputModule, MatExpansionModule, MatButtonToggleModule, MatDialogModule, MatNativeDateModule, MatFormFieldModule, MatSliderModule, MatButtonModule],
+    exports: [MatDatepickerModule, MatInputModule, MatExpansionModule, MatButtonToggleModule, MatDialogModule, MatNativeDateModule, MatFormFieldModule, MatSliderModule, MatButtonModule],
 })
 export class MaterialModule { }

@@ -3,42 +3,26 @@
     <div class="col-md-6 mx-auto text-white text-center">
         <!-- blog title and author name -->
         <h4 class="h4 mt-2 mb-5">Weather Forecast & Weather History</h4>
+        {{selectedCity}}
         <mat-button-toggle-group name="" aria-label="Font Style">
-            <mat-button-toggle (click)="onBtnChangeHandler('Horsens')" value="">Horsens</mat-button-toggle>
+            <mat-button-toggle toggle (click)="onBtnChangeHandler('Horsens')" value="">Horsens</mat-button-toggle>
             <mat-button-toggle toggle (click)="onBtnChangeHandler('Aarhus')" value="">Århus</mat-button-toggle>
             <mat-button-toggle toggle (click)="onBtnChangeHandler('Copenhagen')" value="">Copenhagen</mat-button-toggle>
         </mat-button-toggle-group>
 
+
     </div>
+
     <div>
+
         <app-filter></app-filter>
     </div>
-</div>
-<div>
-    <p> You've clicked <button type="button" class="btn btn-light" (click)="countClick()">this</button>{{clickCounter}}
-        times</p>
     <div>
-        <!-- two way data binding...the input parameter will send and recieve data from and to the home component -->
-        <p><input type="text" [(ngModel)]="name">
-            <br>
-            <strong>you said</strong> {{name}}
-        </p>
+        <app-post></app-post>
     </div>
-
-
 </div>
-<div [style.background-color]="clickCounter>4 ? 'yellow' : 'cyan' ">
-
-    <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none" ]>
-        <p>click counter >4</p>
-    </ng-template>
-
-    <ng-template #none>
-        <p>click counter not > 4</p>
-    </ng-template>
 
 
-</div>
 
 <!-- DISPLAYING DATA ON TABLES -->
 <div>
@@ -64,28 +48,24 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let element of weatherForecast">
-                                <td>{{element.place}}</td>
+                                <th>{{element.place}}</th>
                                 <td>{{element.type}}</td>
                                 <td>{{element.from}}</td>
                                 <td>{{element.to}}</td>
                                 <td>{{element.unit}}</td>
                                 <td>{{element.time}}</td>
-                                <ng-template [ngIf]="element.type=='precipitation_types' " [ngIfElse]="dash">
-                                    <td>HELLO</td>
-                                    {{setPreciptation(element.precipitation_types)}}
 
-
+                                <ng-template [ngIf]="element.type=='precipitation' " [ngIfElse]="dash">
+                                    <ng-template> [precipitation_types]="element.precipitation_types" </ng-template>
+                                    <td>{{element.precipitation_types}}</td>
                                 </ng-template>
-
                                 <ng-template [ngIf]="element.type=='wind speed' " [ngIfElse]="dash">
-                                    <td>{{element.direction}}</td>
+                                    <ng-template> [directions]="element.directions" </ng-template>
+                                    <td>{{element.directions}}</td>
                                 </ng-template>
                                 <ng-template #dash>
                                     <td>-</td>
-
                                 </ng-template>
-
-
                             </tr>
                         </tbody>
                     </table>
@@ -112,7 +92,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let element of weatherHistory">
-                                <td>{{element.place}}</td>
+                                <th>{{element.place}}</th>
                                 <td>{{element.type}}</td>
                                 <td>{{element.value}}</td>
                                 <td>{{element.unit}}</td>
@@ -141,3 +121,15 @@
 </div>
 <!-- /accordian -->
 <!-- table showing weather data -->
+
+<!-- <div [style.background-color]="clickCounter>4 ? 'yellow' : 'cyan' ">
+
+    <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none" ]>
+        <p>click counter >4</p>
+    </ng-template>
+
+    <ng-template #none>
+        <p>click counter not > 4</p>
+    </ng-template>
+    <b>fuckkkk</b>
+</div> -->

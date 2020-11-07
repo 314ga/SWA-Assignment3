@@ -16,34 +16,31 @@ export class HomeComponent implements OnInit {
   fetchForecast: string = 'forecast/';
   selectedCity: string = 'Horsens'
   str: string = '';
-  prectTypes: Object;
+  precipitation_types: string[];
+  directions: string[];
+  successResponse: Object;
 
   constructor(private restApi: RestAPIService) { }
 
   ngOnInit(): void {
+    this.onBtnChangeHandler(this.selectedCity)
   }
-  setPrecipitations(obj) {
-    obj.forEach(element => {
-      if (element == "") {
-        this.str = element;
-      }
-      else {
-        this.str += " " + element + ", ";
-      }
-    });
-    console.log("precipitations");
 
-    console.log(this.str);
-
-  }
   countClick() {
     this.clickCounter += 1;
   }
-  retrieveAllData(city) {
-    this.restApi.getAllData(this.fetchHistory + "" + city).subscribe(data => {
+  postWeatherHistory() {
+    this.restApi.postHistoricData("temperature", 150, "C", new Date(), "Horsens", "").subscribe(data => {
+      this.successResponse = data;
+      console.log(data);
+    })
+
+  }
+  retrieveAllData() {
+    this.restApi.getAllData(this.fetchHistory + "" + this.selectedCity).subscribe(data => {
       this.weatherHistory = data;
     });
-    this.restApi.getAllData(this.fetchForecast + "" + city).subscribe(data => {
+    this.restApi.getAllData(this.fetchForecast + "" + this.selectedCity).subscribe(data => {
       this.weatherForecast = data;
       console.log(this.weatherForecast);
     });
@@ -52,8 +49,13 @@ export class HomeComponent implements OnInit {
 
   }
   onBtnChangeHandler(city) {
-    this.retrieveAllData(city);
     this.selectedCity = city;
+    this.retrieveAllData();
+
+    console.log(`onchange called`);
+    console.log(this.selectedCity);
+
+
 
   }
 }

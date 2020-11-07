@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div>
+                <!-- start Date setter -->
+                <p>Select Start Date</p>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="startDatePicker" [min]="minDate" [max]="maxDate">
+                    <mat-datepicker-toggle [for]="startDatePicker" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #startDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="col-4">
+            <p>Select End Date</p>
+            <!-- End Date Setter -->
+            <div>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="endDatePicker" [min]="minDate" [max]="maxDate">
+                    <mat-datepicker-toggle [for]="endDatePicker" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #endDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div><button mat-raised-button (click)="openDialog()">Post Weather Data</button>
+    </div>
+</div>

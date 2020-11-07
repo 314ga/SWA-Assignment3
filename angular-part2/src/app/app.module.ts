@@ -9,13 +9,18 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material'
 import { FilterComponent } from './filter/filter.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { PostComponent } from './post/post.component';
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FilterComponent,
+    PostComponent,
+    PostDialogComponent,
   ],
+  entryComponents: [PostDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
