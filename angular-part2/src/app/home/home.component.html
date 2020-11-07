@@ -2,27 +2,21 @@
 
     <div class="col-md-6 mx-auto text-white text-center">
         <!-- blog title and author name -->
-        <h4 class="h4 mt-2 mb-5">Weather Forecast & Weather History</h4>
-        {{selectedCity}}
-        <mat-button-toggle-group name="" aria-label="Font Style">
-            <mat-button-toggle toggle (click)="onBtnChangeHandler('Horsens')" value="">Horsens</mat-button-toggle>
-            <mat-button-toggle toggle (click)="onBtnChangeHandler('Aarhus')" value="">Århus</mat-button-toggle>
-            <mat-button-toggle toggle (click)="onBtnChangeHandler('Copenhagen')" value="">Copenhagen</mat-button-toggle>
+        <h4 class="h4 mt-2 mb-5">Weather Forecast & Weather History for  {{cities}}</h4>
+       
+        <mat-button-toggle-group name="" aria-label="Font Style" [(ngModel)]="cities" (ngModelChange)="onCityChange($event)">
+            <mat-button-toggle toggle selected value="Horsens">Horsens</mat-button-toggle>
+            <mat-button-toggle toggle value="Aarhus">Århus</mat-button-toggle>
+            <mat-button-toggle toggle value="Copenhagen">Copenhagen</mat-button-toggle>
         </mat-button-toggle-group>
-
-
     </div>
-
     <div>
-
         <app-filter></app-filter>
     </div>
     <div>
         <app-post></app-post>
     </div>
 </div>
-
-
 
 <!-- DISPLAYING DATA ON TABLES -->
 <div>

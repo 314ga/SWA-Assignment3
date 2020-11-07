@@ -10,8 +10,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { } from '@angular/material/datepicker';
 import { } from '@angular/material/datepicker';
+
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 @NgModule({
-    imports: [MatDatepickerModule, MatInputModule, MatExpansionModule, MatButtonToggleModule, MatDialogModule, MatNativeDateModule, MatFormFieldModule, MatSliderModule, MatButtonModule],
-    exports: [MatDatepickerModule, MatInputModule, MatExpansionModule, MatButtonToggleModule, MatDialogModule, MatNativeDateModule, MatFormFieldModule, MatSliderModule, MatButtonModule],
+    imports: [OwlDateTimeModule, OwlNativeDateTimeModule,MatDatepickerModule, MatInputModule, MatExpansionModule, MatButtonToggleModule, MatDialogModule, MatNativeDateModule, MatFormFieldModule, MatSliderModule, MatButtonModule],
+    exports: [OwlDateTimeModule, OwlNativeDateTimeModule,MatDatepickerModule, MatInputModule, MatExpansionModule, MatButtonToggleModule, MatDialogModule, MatNativeDateModule, MatFormFieldModule, MatSliderModule, MatButtonModule],
 })
 export class MaterialModule { }
