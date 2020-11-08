@@ -10,6 +10,9 @@
             <mat-button-toggle toggle value="Aarhus">Århus</mat-button-toggle>
             <mat-button-toggle toggle value="Copenhagen">Copenhagen</mat-button-toggle>
         </mat-button-toggle-group>
+
+    </div>
+    <div class="text-center mt-1"><button mat-raised-button (click)="retrieveAllData()">Refresh Data</button>
     </div>
     <div>
         <app-filter [cities]=cities (returnData)="setFilterData($event)"></app-filter>

@@ -66,7 +66,7 @@ export function postHistoricData(requestType,type,value,unit,time,place, extras)
           case 'temperature':
           case 'cloud coverage':
               {
-                data = await api.post(requestType, { value: value, type: type, unit: unit, time: time, place: place})
+                data = await api.post(requestType, { value: parseInt(value), type: type, unit: unit, time: time, place: place})
                 .then(function (response) {
                     if(response.status == 201)
                     {
@@ -84,7 +84,7 @@ export function postHistoricData(requestType,type,value,unit,time,place, extras)
               }
           case 'precipitation':
               {
-                data = await api.post(requestType, {value: value, precipitation_type: extras, type: type, unit: unit, time: time, place: place})
+                data = await api.post(requestType, {value: parseInt(value), precipitation_type: extras, type: type, unit: unit, time: time, place: place})
                 .then(function (response) {
                     if(response.status == 201)
                     {
@@ -102,7 +102,7 @@ export function postHistoricData(requestType,type,value,unit,time,place, extras)
               }
           case 'wind speed':
               {
-                data = await api.post(requestType, {value: value, direction: extras, type: type, unit: unit, time: time, place: place})
+                data = await api.post(requestType, {value: parseInt(value), direction: extras, type: type, unit: unit, time: time, place: place})
                 .then(function (response) {
                     if(response.status == 201)
                     {

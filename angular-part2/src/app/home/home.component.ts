@@ -44,6 +44,10 @@ export class HomeComponent implements OnInit {
     }
 
   }
+  refreshData()
+  {
+    this.retrieveAllData();
+  }
   setData(historyData: Object, prediction: Object) {
     this.weatherHistory = historyData;
     this.weatherForecast = prediction;
