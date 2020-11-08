@@ -20,8 +20,5 @@
   "dependencies": {
     "express": "^4.17.1",
     "ws": "^7.1.1"
-  },
-  "devDependencies": {
-    "remote-redux-devtools": "^0.5.16"
   }
 }
