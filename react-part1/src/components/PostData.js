@@ -129,8 +129,6 @@ function PostData() {
                                         <option>snow</option>
                                         <option>sleet</option>
                                         <option>hail</option>
-                                        <option>mm</option>
-                                        <option>inch</option>
                                     </Form.Control>
                                 </Form.Group>
                             </Col>

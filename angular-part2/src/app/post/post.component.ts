@@ -23,12 +23,12 @@ export class PostComponent implements OnInit {
 
   openDialog(): void {
     //reference to the post dialog
-    let dialogRef = this.dialog.open(PostDialogComponent, { data: { name: 'Horsens' } });
+    let dialogRef = this.dialog.open(PostDialogComponent, { data: { name: 'weather data' } });
     //now we can subscribe to the dialog 
     //this way we can get updated when the user sends data through the dialog and closes it
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`DialogResult: ${result}`);
-
+      //console.log(`DialogResult: ${result}`);
+      console.log(result);
     })
   }
 }

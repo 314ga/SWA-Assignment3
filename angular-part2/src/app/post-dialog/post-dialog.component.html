@@ -1,17 +1,71 @@
 <h2 mat-dialog-title>Post something here</h2>
-<mat-dialog-content>{{data.name}}You can post stuff here</mat-dialog-content>
+<mat-dialog-content>You can post {{data.name}} here</mat-dialog-content>
 
 <mat-form-field appearance="fill">
     <mat-label>Choose a city</mat-label>
-    <select matNativeControl required>
+    <select matNativeControl required [(ngModel)]="data.city">
         <option value="Horsens">Horsens</option>
         <option value="AArhus">Århus</option>
         <option value="Copenhagen">Copenhagen</option>
     </select>
-
 </mat-form-field>
 
+<mat-form-field appearance="fill">
+    <mat-label>Choose a type of data</mat-label>
+    <select matNativeControl required [(ngModel)]="data.type">
+        <option value="temperature">Temperature</option>
+        <option value="cloud coverage">Cloud coverage</option>
+        <option value="precipitation">Precipitation</option>
+        <option value="wind speed">Wind speed</option>
+    </select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Type (just for WIND)</mat-label>
+    <select matNativeControl [(ngModel)]="data.windtype">
+        <option value="">-</option>
+        <option value="West">West</option>
+        <option value="East">East</option>
+        <option value="South">South</option>
+        <option value="North">North</option>
+        <option value="Southeast">Southeast</option>
+        <option value="Northeast">Northeast</option>
+        <option value="Southwest">Southwest</option>
+        <option value="Northwest">Northwest</option>
+    </select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Choose a unit</mat-label>
+    <select matNativeControl required [(ngModel)]="data.unit">
+        <option value="°C">°C</option>
+        <option value="F">F</option>
+        <option value="km/h">km/h</option>
+        <option value="m/s">m/s</option>
+        <option value="%">%</option>
+        <option value="mm">mm</option>
+        <option value="inch">inch</option>
+    </select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Type (just for PRECIPITATION)</mat-label>
+    <select matNativeControl  [(ngModel)]="data.precipitation">
+        <option value="-">-</option>
+        <option value="rain">rain</option>
+        <option value="snow">snow</option>
+        <option value="sleet">sleet</option>
+        <option value="hail">hail</option>
+    </select>
+</mat-form-field>
+
+<label>
+    Date Time Range:
+    <input [(ngModel)]="data.time" [owlDateTimeTrigger]="dt" [owlDateTime]="dt">
+    <owl-date-time #dt></owl-date-time>
+</label>
+
 <mat-dialog-actions>
-    <button mat-button mat-dialog-close="false">Post Data</button>
-    <button mat-button mat-dialog-close="true">Cancel</button>
+    <button mat-button [mat-dialog-close]="data">Post Data</button>
+    <button mat-button mat-dialog-close="false">Cancel</button>
 </mat-dialog-actions>
