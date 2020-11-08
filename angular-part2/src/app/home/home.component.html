@@ -2,9 +2,10 @@
 
     <div class="col-md-6 mx-auto text-white text-center">
         <!-- blog title and author name -->
-        <h4 class="h4 mt-2 mb-5">Weather Forecast & Weather History for  {{cities}}</h4>
-       
-        <mat-button-toggle-group name="" aria-label="Font Style" [(ngModel)]="cities" (ngModelChange)="onCityChange($event)">
+        <h1 class="text-bold mt-2 mb-5">Weather Forecast & Weather History for {{cities}}</h1>
+
+        <mat-button-toggle-group name="" aria-label="Font Style" [(ngModel)]="cities"
+            (ngModelChange)="onCityChange($event)">
             <mat-button-toggle toggle selected value="Horsens">Horsens</mat-button-toggle>
             <mat-button-toggle toggle value="Aarhus">Århus</mat-button-toggle>
             <mat-button-toggle toggle value="Copenhagen">Copenhagen</mat-button-toggle>
@@ -113,17 +114,3 @@
 
     </ngb-accordion>
 </div>
-<!-- /accordian -->
-<!-- table showing weather data -->
-
-<!-- <div [style.background-color]="clickCounter>4 ? 'yellow' : 'cyan' ">
-
-    <ng-template [ngIf]="clickCounter > 4" [ngIfElse]="none" ]>
-        <p>click counter >4</p>
-    </ng-template>
-
-    <ng-template #none>
-        <p>click counter not > 4</p>
-    </ng-template>
-    <b>fuckkkk</b>
-</div> -->

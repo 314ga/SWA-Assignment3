@@ -1,14 +1,20 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col-12 mt-4">
 
-<div>
+      <label class="text-white">
+        <p class="lead">Set Filter</p>
+        <input [(ngModel)]="dateTime" (ngModelChange)="onChange($event)" [owlDateTimeTrigger]="dt10"
+          [owlDateTime]="dt10" [selectMode]="'range'">
+        <owl-date-time #dt10></owl-date-time>
+      </label>
 
-  <label>
-    Date Time Range:
-    <input [(ngModel)]="dateTime" (ngModelChange)="onChange($event)" [owlDateTimeTrigger]="dt10" [owlDateTime]="dt10"
-           [selectMode]="'range'">
-    <owl-date-time #dt10></owl-date-time>
-</label>
-<div>
-  <button mat-raised-button  (click)="resetFilter()">Reset filter</button>
-</div>
 
+
+
+    </div>
+    <div class="col-12 mt-1">
+      <button mat-raised-button (click)="resetFilter()"><b>Reset filter</b></button>
+    </div>
+  </div>
 </div>

@@ -9,8 +9,8 @@ import { RestAPIService } from '../rest-api.service'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
-  cities="Horsens";
+
+  cities = "Horsens";
   clickCounter: number = 0;
   name: string = '';
   isFilterSet = false;
@@ -18,14 +18,12 @@ export class HomeComponent implements OnInit {
   weatherForecast: Object;
   precipitation_types: string[];
   directions: string[];
-  successResponse: Object;
 
   constructor(private restApi: RestAPIService) { }
 
-  onCityChange(data: string)
-  {
+  onCityChange(data: string) {
     this.cities = data;
-    if(!this.isFilterSet)
+    if (!this.isFilterSet)
       this.retrieveAllData();
   }
   ngOnInit(): void {
@@ -35,35 +33,29 @@ export class HomeComponent implements OnInit {
   /*
   *Callback method from filter component
   */
- setFilterData(data: Object[])
- {
-   if(data != null)
-   {
-    this.isFilterSet = true;
-    this.setData(data[0], data[1]);
-   }
-   else
-   {
-     this.isFilterSet = false;
-     this.retrieveAllData();
-   }
-  
- }
-  setData(historyData: Object,prediction: Object)
-  {
+  setFilterData(data: Object[]) {
+    if (data != null) {
+      this.isFilterSet = true;
+      this.setData(data[0], data[1]);
+    }
+    else {
+      this.isFilterSet = false;
+      this.retrieveAllData();
+    }
+
+  }
+  setData(historyData: Object, prediction: Object) {
     this.weatherHistory = historyData;
     this.weatherForecast = prediction;
   }
-  retrieveAllData() 
-  {
-      const historyPromise = this.restApi.getData("data/" + this.cities);
-      const forecastPromise = this.restApi.getData("forecast/" + this.cities);
-      Promise.all([historyPromise,forecastPromise]).then((promiseData)=>{
-        this.setData(promiseData[0],promiseData[1]); 
-        
-      }).catch((err)=>
-      {
-        console.log("Promise rejected" + err);
-      });
+  retrieveAllData() {
+    const historyPromise = this.restApi.getData("data/" + this.cities);
+    const forecastPromise = this.restApi.getData("forecast/" + this.cities);
+    Promise.all([historyPromise, forecastPromise]).then((promiseData) => {
+      this.setData(promiseData[0], promiseData[1]);
+
+    }).catch((err) => {
+      console.log("Promise rejected" + err);
+    });
   }
 }
