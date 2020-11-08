@@ -13,6 +13,7 @@ export class RestAPIService {
 
   /*Get data from the server 
   *@param type is for edding desired URL ending for base URL
+  *using promisses for easier implementation of waiting for all promisses(Promise.all)
   **/
   getData(type: string) {
     const options = {

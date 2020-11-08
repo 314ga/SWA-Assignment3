@@ -19,6 +19,11 @@ export class PostComponent implements OnInit {
 
   }
 
+  /**
+   * Opens dialog window and send data into it with with open function
+   * when dialog is closed all the data from the user inputs is passed from dialog 
+   * to this component and result is post to the server with restApi service
+   */
   openDialog(): void {
     //reference to the post dialog
     let dialogRef = this.dialog.open(PostDialogComponent, { data: { name: 'weather data' } });

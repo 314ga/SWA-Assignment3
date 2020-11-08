@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   isFilterSet = false;
   weatherHistory: Object;
   weatherForecast: Object;
+  //contains all precipitaion types
   precipitation_types: string[];
   directions: string[];
 
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   /*
-  *Callback method from filter component
+  *Callback method called from filter component
   */
   setFilterData(data: Object[]) {
     if (data != null) {
@@ -44,14 +45,22 @@ export class HomeComponent implements OnInit {
     }
 
   }
+  //refresh the data
   refreshData()
   {
     this.retrieveAllData();
   }
+
+  //set data to the variables
   setData(historyData: Object, prediction: Object) {
     this.weatherHistory = historyData;
     this.weatherForecast = prediction;
   }
+
+   /**
+   * Creates 2 promises(one for forecast one for history data) and put the into Promise.all
+   * which waits until both of them are resolved and then they are populated into the tables
+   */
   retrieveAllData() {
     const historyPromise = this.restApi.getData("data/" + this.cities);
     const forecastPromise = this.restApi.getData("forecast/" + this.cities);
