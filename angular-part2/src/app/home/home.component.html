@@ -11,7 +11,7 @@
         </mat-button-toggle-group>
     </div>
     <div>
-        <app-filter></app-filter>
+        <app-filter [cities]=cities (returnData)="setFilterData($event)"></app-filter>
     </div>
     <div>
         <app-post></app-post>
@@ -23,7 +23,7 @@
     <ngb-accordion [closeOthers]="true" activeIds="static-1">
         <ngb-panel id="static-1">
             <ng-template ngbPanelTitle>
-                <span>&#9733; <b>WEATHER FORECAST</b> &#9733;</span>
+                <span>&#9733; <b>Weather Forecast {{cities}}</b> &#9733;</span>
             </ng-template>
             <ng-template ngbPanelContent>
                 <div>
@@ -68,7 +68,7 @@
         </ngb-panel>
         <ngb-panel id="static-2">
             <ng-template ngbPanelTitle>
-                <span>&#9733; <b>Weather History for {{selectedCity}}</b> &#9733;</span>
+                <span>&#9733; <b>Weather History for {{cities}}</b> &#9733;</span>
             </ng-template>
             <ng-template ngbPanelContent>
                 <div>

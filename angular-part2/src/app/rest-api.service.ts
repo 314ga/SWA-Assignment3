@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse} from '@angula
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { Config } from 'protractor';
-import { time } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -15,15 +14,14 @@ export class RestAPIService {
   /*Get data from the server 
   *@param type is for edding desired URL ending for base URL
   **/
-  getAllData(type: string)
+  getData(type: string)
   {
     const options = {
       responseType: 'json' as const,
     };
     return this.http.get<Config>(this.configUrl + type, options)
-    .pipe(
-      catchError(this.handleError)
-    );
+    .pipe(catchError(this.handleError)
+    ).toPromise();
   }
   /*Post historic data to the server 
   *@param type, e.g. Temperature
