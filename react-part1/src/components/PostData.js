@@ -27,10 +27,12 @@ function PostData() {
     const [dateTime, setDateTime] = useState(new Date());
 
 
+    //handles closing and opening modal popup dialog window
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    //handles posting data into the server
     const handleSaveData = () => {
-        console.log({ dateTime });
         switch (type) {
             case "temperature":
             case "cloud coverage":
@@ -52,7 +54,7 @@ function PostData() {
                 break;
 
         }
-
+        //closing the dialog window
         setShow(false);
     };
 

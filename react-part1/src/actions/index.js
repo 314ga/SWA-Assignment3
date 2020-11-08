@@ -1,3 +1,4 @@
+/** this index.js describes the actions for reducers*/
 export const setHistoricData = (data) =>
 {
     return {

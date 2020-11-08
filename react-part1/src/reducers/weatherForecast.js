@@ -13,7 +13,14 @@ export default function weatherForecastReducer (state = [], action) {
     } 
 }
 
-//retrieve data with REST API and set it to the store
+//retrieve data with REST API and set it to the store - described more in weatherData
+/**
+ * 
+ * @param {*} type is ending of the base URL from axios, eg. base: 'http://localhost:8080/' type: 'forecast'
+ * @param {*} filter if filter is set - if not startDate & endDate == null
+ * @param {*} startDate filter start date
+ * @param {*} endDate filter end date
+ */
 export function retrieveForecastData(type, filter, startDate, endDate)
 {
     return async function fetchWeatherData(dispatch, getState){

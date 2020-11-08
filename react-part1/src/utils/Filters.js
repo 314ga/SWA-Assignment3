@@ -1,4 +1,10 @@
 
+/**
+ * @param {*array} data  with all data which should be sorted out
+ * @param {*date} startDate start date for filter range
+ * @param {*array} endDate end date for filter range
+ * @return filtered array of data
+ */
 export const getDataFromPeriod = (data, startDate, endDate) => {
     let filteredData = data.filter(function (later) {
         //to remove GTM +xx problem

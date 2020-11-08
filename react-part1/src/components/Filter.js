@@ -9,14 +9,20 @@ function Filter(props) {
     const [endTime, setEndTime] = useState(new Date());
     const [startTime, setStartTime] = useState(new Date());
 
-    //add here name of the actual selected city(maybe use states will be neccessery)
+    /**
+     * function called by apply filter button
+     * triggerFilterSet set states in weatherpage
+     */
     const handleApplyFilter = () => {
         triggerFilterSet(true,startTime,endTime);
         retrieveAllData(props.selectedCity, true, startTime, endTime);
        
     };
 
-    //add here name of the actual selected city(maybe use states will be neccessery)
+    /**
+     *  triggerFilterSet set states in weatherpage
+     * calls retrieve all data with filterset(second parameter) as false
+     */
     const handleResetFilter = () => {
         triggerFilterSet(false,null,null);
         retrieveAllData(props.selectedCity, false, startTime, endTime);
@@ -24,10 +30,16 @@ function Filter(props) {
         setEndTime(new Date());
         
     };
+
+    /**
+     * calling callback function in the weather page through the props
+     * set states in weatherpage
+    */
     const triggerFilterSet = (value,sTime,eTime) => {
         props.triggerFilterSet(value,sTime,eTime);
     }
 
+    //setting states
     const onChangeStart = startTime => setStartTime(startTime);
     const onChangeEnd = endTime => setEndTime(endTime);
 

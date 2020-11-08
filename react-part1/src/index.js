@@ -8,6 +8,9 @@ import { Provider } from 'react-redux'
 import { retrieveHistoricData } from './reducers/weatherData'
 import { retrieveForecastData } from './reducers/weatherForecast';
 
+/**
+ * Getting default data from the server 
+ */
 store.dispatch(retrieveHistoricData("data/Horsens", false, null, null));
 store.dispatch(retrieveForecastData("forecast/Horsens", false, null, null));
 

@@ -12,9 +12,10 @@ export default function weatherDataReducer (state = [], action) {
     } 
 }
 
-//retrieve data with REST API and set it to the store
+//retrieve data asynchronously with REST API and calls the action for specific reducer
 export function retrieveHistoricData(type,filter, startDate, endDate)
 {
+    //thunk function(middleweare) for allowing asynch API calls before putting data into the store(something like callback)
     return async function fetchWeatherData(dispatch, getState){
         const data = await api.get(type)
         .then(({data}) => data)
@@ -38,9 +39,11 @@ export function retrieveHistoricData(type,filter, startDate, endDate)
             }
         });
         
+        //check if data comes back from server
         if(data != undefined)
         {
            
+            //check if filter data should be filtered after retrieving and reducer action is called
             if(!filter)
                 dispatch(setHistoricData(data));
             else
@@ -54,11 +57,10 @@ export function retrieveHistoricData(type,filter, startDate, endDate)
     }
 }
 
-
-
-//post data with REST API to the server
+//post data asynchronously with REST API to the server
 export function postHistoricData(requestType,type,value,unit,time,place, extras)
 {
+    //dispatch and getState parameters are neccessary for thunk middleware
     return async function postWeatherData(dispatch, getState){
       let data;
       switch(type)

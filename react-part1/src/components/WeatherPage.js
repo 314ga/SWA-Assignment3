@@ -32,14 +32,22 @@ function WeatherPage() {
     const historicData = useSelector(state => state.historicData);
     const forecastData = useSelector(state => state.forecastData);
 
+    /**
+     * Function is called from the Filter Component(callback function)
+     * @param {boolean} filterValue if filter is applied
+     * @param {date} sDate start date if filter is applied else null
+     * @param {date} eDate end date if filter is applied else null
+     */
     const handleCallback = (filterValue, sDate, eDate) => {
         setFilterSet(filterValue);
         setselectedSDate(sDate);
         setselectedEDate(eDate);
     }
+
     //toggle buttons
     const onBtnChangeHandler = (city) => {
 
+        //fix for toggle buttons calling onbuttonchangehandler twice
         if (!debounce) {
             setSelectedCity(city);
             retrieveAllData(city, filterSet, selectedSDate, selectedEDate);
